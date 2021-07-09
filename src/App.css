@@ -2,37 +2,80 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+/*   LANDING PAGE */
+.landingPage {
+  width : 100%;
+  height : 500px;
+  /* background-image: ; */
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+}
+.landingPage .btn{
+  margin: 35%
+}
+.landingPage .btn:hover{
+  background: #333;
+  color: #FFF;
 }
 
-.App-link {
-  color: #61dafb;
+.header-title {
+
+  padding : 50px 0px;
+  text-transform: uppercase;
+  
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.footer-text{
+  padding-left: 50px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.leftCol, .rightCol{
+height : 100%;
+}
+.leftBackground {
+  background-color: #212529;
+}
+  /* SIGNUP PAGE */
+  .center-page{
+    width : 100%;
+    height : 500px;
+    background-color: #f8f9fa;
   }
-  to {
-    transform: rotate(360deg);
+
+  .col-info{
+    padding-top: 80px;
   }
+
+
+
+  /* QUIZ Qestion and Options */
+
+  .signOutbtn{
+    text-align: right;
+    padding-top: 20px;
+  }
+  .connected-page{
+    width : 100%;
+    background-color: #f8f9fa;
+    padding-bottom: 50px;
+  }
+
+.answerOptions {
+  display: block;
+  background-color: #1212;
+  padding: 1rem 2%;
+}
+
+.answerOptions:hover {
+  background-color: pink;
+}
+.selectedOption{
+  background-color: pink;
+  text-transform: uppercase;
+}
+
+.nextBtn{
+  text-align:center;
 }
