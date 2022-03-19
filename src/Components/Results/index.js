@@ -1,48 +1,67 @@
-import React from 'react'
+import React from "react";
 
 const Results = (props) => {
-
-    //console.log(props.datas)
-    // display questions and good answers using props.datas
-    const displayResults = props.datas.map((data, index)=>{
-        console.log(data)
-        return (
-            <tr key={index}>
-                <th scope="row">{data.id+1}</th>
-                <td>{data.question}</td>
-                <td>{data.answer}</td>
-            </tr>
-        )
-    }
-
-    )
-
+  // display questions and good answers using props.datas
+  const { userAnswers } = props;
+  const displayResults = props.datas.map((data, index) => {
+    console.log(data);
     return (
-        <div>
-            <div className="row">
-                <div className="col">
-                    Votre score est de {`${props.score*10}%`}
-                </div>
-                <div className="col">
-                <button onClick={()=>props.loadNextLevel()} type="button" className="btn btn-outline-secondary">Niveau Suivant</button>
-                </div>
-            </div>
-            <br />
-            <h2>Récapitulatif du Quiz</h2>
-            <table className="table">
-                <thead className="thead-dark">
-                    <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Question</th>
-                    <th scope="col">Réponse</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {displayResults}
-                </tbody>
-                </table>
-        </div>
-    )
-}
+      <tr key={index}>
+        <th scope="row">{data.id + 1}</th>
+        <td
+          style={{
+            color: userAnswers[index] === data.answer ? "green" : "red",
+          }}
+        >
+          {data.question}
+        </td>
+        <td>{data.answer}</td>
+      </tr>
+    );
+  });
 
-export default Results
+  return (
+    <div>
+      <div className="row">
+        <div
+          className="col"
+          style={{ color: props.score > 60 ? "green" : "red" }}
+        >
+          Votre score est de {`${props.score * 10}%`}
+        </div>
+        <div className="col">
+          <button
+            onClick={() => props.loadSameLevel()}
+            type="button"
+            className="btn btn-outline-secondary"
+            style={{ marginRight: "2rem" }}
+          >
+            Recommencer
+          </button>
+          <button
+            onClick={() => props.loadNextLevel()}
+            type="button"
+            className="btn btn-outline-secondary"
+            disabled={props.quizLevel === 3}
+          >
+            Niveau Suivant
+          </button>
+        </div>
+      </div>
+      <br />
+      <h2>Récapitulatif du Quiz</h2>
+      <table className="table">
+        <thead className="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Question</th>
+            <th scope="col">Réponse</th>
+          </tr>
+        </thead>
+        <tbody>{displayResults}</tbody>
+      </table>
+    </div>
+  );
+};
+
+export default Results;
