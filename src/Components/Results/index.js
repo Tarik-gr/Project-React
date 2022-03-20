@@ -4,9 +4,8 @@ const Results = (props) => {
   // display questions and good answers using props.datas
   const { userAnswers } = props;
   const displayResults = props.datas.map((data, index) => {
-    console.log(data);
     return (
-      <tr key={index}>
+      <tr key={index} data-testId="row-result">
         <th scope="row">{data.id + 1}</th>
         <td
           style={{
@@ -15,7 +14,14 @@ const Results = (props) => {
         >
           {data.question}
         </td>
-        <td>{data.answer}</td>
+        <td
+          style={{
+            color: userAnswers[index] === data.answer ? "green" : "red",
+          }}
+          data-testId="answers"
+        >
+          {data.answer}
+        </td>
       </tr>
     );
   });
@@ -25,7 +31,7 @@ const Results = (props) => {
       <div className="row">
         <div
           className="col"
-          style={{ color: props.score > 60 ? "green" : "red" }}
+          style={{ color: props.score > 6 ? "green" : "red" }}
         >
           Votre score est de {`${props.score * 10}%`}
         </div>
